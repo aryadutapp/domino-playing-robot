@@ -14,10 +14,8 @@ Dalam hal ini memfokuskan pengoperasian DoBot Magician melalui Python dengan  me
 * [Memulai](#Memulai)
 * [Keperluan](#Keperluan)
 * [Panduan](#Panduan)
-   * [Pengaturan Kamera](#Pengaturan-Kamera)
-   * [Deteksi Objek dengan YOLOv8](#Deteksi-Objek-dengan-YOLOv8)
-   * [Menghubungkan Robot](#Menghubungkan-Robot)
-   * [Kalibrasi Robot dengan Kamera](#Kalibrasi-Robot-dengan-Kamera)
+   * [Training](#Training)
+   * [Kalibrasi](#Kalibrasi)
    * [Bermain](#Bermain)
 * [Kode Akhir](#Kode-Akhir)
 
@@ -48,7 +46,7 @@ Perhatian: Untuk keperluan minimum software, harap untuk membaca dokumentasi mas
 
 Untuk memahami bagaimana alur kerja robot, mari kita bagi ke tiga bagian yaitu (training, kalibrasi posisi, dan bermain). 
 
-**Training**
+## Training
 
 Untuk bagian pertama adalah training yaitu bagaimana robot dapat mendeteksi kartu. Dalam hal ini kita memerlukan untuk mendeteksi kartu dan mengambil koordinat titik tengah dari bounding box. Dalam contoh di repo ini akan menggunakan model YOLOv8 dengan format "detect-model.pt". Jika menggunakan model tipe lain dapat, mengaturnya di bagian kode. Jika ingin menggunakan algoritma deteksi selain YOLOv8, dapat dilakukan asal dapat mengekstrak kelas deteksi dan koordinat titik tengah bounding box. Pada intinya, program harus menerima data deteksi dalam bentuk array kelas, array koordinat x dan array koordinat y. 
 
@@ -66,9 +64,9 @@ Untuk bagian kedua adalah kalibrasi yaitu bagaimana robot dapat menentukan koord
 | 120      | 225      | 175     | 200     |
 | 135      | 200      | 175     | 200     |
 
-Dapat dilihat di contoh diatas adalah data untuk satu kartu. Mengapa dua objek dengan koordinat kamera yang berbeda memiliki koordinat robot yang sama. Ingat bahwa dalam kartu domino, setiap kartu memiliki 2 nilai (misal[2,3]). maka untuk memudahkan pekerjaan, kita hanya akan mengumpulkan data kalibrasi untuk setiap kartu. Maka 1 kartu yang terdeteksi 2 kelas akan memiliki koordinat akhir robot yang sama.
+Dapat dilihat di contoh diatas adalah data untuk satu kartu. Mengapa dua objek dengan koordinat kamera yang berbeda memiliki koordinat robot yang sama?. Ingat bahwa dalam kartu domino, setiap kartu memiliki 2 nilai (misal[2,3]). maka untuk memudahkan pekerjaan, kita hanya akan mengumpulkan data kalibrasi untuk setiap kartu. Maka 1 kartu yang terdeteksi 2 kelas akan memiliki koordinat akhir robot yang sama.
 
-**Kalibrasi Posisi**
+## Kalibrasi
 
 **Lalu bagaimana kita dapat mengonversi koordinat kamera ke robot ?**
 
@@ -134,3 +132,42 @@ Dalam melakukan kalibrasi ada beberapa hal yang perlu diperhatikan:
 - Pastikan hanya melakukan pengumpulan data kalibrasi sesuai dengan jangkauan robot dan kamera menangkap gambar sesuai jangkauan robot (jangan terlalu dekat).
 
 ![Alt text](./assets/cali-vis.png)
+
+## Bermain
+
+Untuk bermain ada beberapa langkah yang harus dilakukan. Pertama mengatur lingkungan bermain robot agar kondusif dan dapat mengangkap gambar. Berikut ini adalah salah satu konfigurasi lingkungan robot. 
+
+![Alt text](./assets/env-vis.png)
+
+Perhatian: Disarankan untuk melakukan set up lingkungan saat melakukan kalibrasi dan TETAP menjaga letak kamera dan robot. Jika sedikit saja robot / kamera bergeser, maka kalibrasi harus dilakukan ulang.
+
+Selanjutnya mari kita membahas fungsi sederhana dalam program utama.
+
+Pseudocode
+```pseudocode
+def convert_coordinates(x, y):
+{       
+    Mengambil inputan koordinat x,y dari hasil deteksi kamera kemudian mengembalikan hasil konversi ke koordinat robot sesuai titik kalibrasi. Misal dalam kamera titik (0,3) namun dalam koordinat robot adalah (12,15).
+}
+
+def capture_card_robot:
+{       
+    Mengambil gambar dari webcam dan mendeteksi kartu robot. Hasil tangkapan akan disimpan ke dalam 3 array. Array pertama menyimpan kelas objek yang dideteksi. Array kedua menyimpan koordinat x. Array ketiga menyimpan koordinat y. Array merupakan variabel global
+}
+
+def capture_card_robot:
+{       
+    Mengambil gambar dari webcam dan mendeteksi kartu meja pemain. Hasil tangkapan akan disimpan ke dalam 1 array menyimpan kartu di meja; misalkan [1,2] (menandakan kartu yang ada dimeja yaitu 1 dan 2). Array merupakan variabel global
+}
+
+def pilih_kartu:
+{       
+    Memilih kartu berdasarkan kartu yang ada di meja pemain dan kartu yang ada dimiliki robot. Misalkan kartu di meja pemain sekarang [1,2] dan kartu yang dimiliki oleh robot yaitu [1,3,3,4,5], Maka robot akan mengambil kartu 1 (berdasarkan koordinat sebelumnya) dan meletakkan di bagian meja pemain. Jika tidak ada kartu maka robot akan skip ke giliran selanjutnya. 
+}
+
+```
+Untuk mengakses kode proyek, silakan mengakses
+
+[Alt text](./Jadi.ipynb
+
+
