@@ -166,8 +166,11 @@ def pilih_kartu:
 }
 
 ```
-Untuk mengakses kode proyek, silakan mengakses
+Untuk mengakses kode proyek, silakan mengakses [Kode Bermain](https://github.com/aryadutapp/domino-playing-robot/blob/main/kode-utama.ipynb)
 
-[Alt text](./Jadi.ipynb
+## Kontributor
 
+- [Aryaduta Putra Perkasa](https://www.linkedin.com/in/aryaduta-putra-perkasa/?originalSubdomain=id)
+- [Moses Mannuel Paliyama](https://www.linkedin.com/in/moses-mannuel-paliyama-438267151?originalSubdomain=id)
+- [Joel Napitupulu](https://www.linkedin.com/in/joel-napitupulu-649076220/?originalSubdomain=id)
 
