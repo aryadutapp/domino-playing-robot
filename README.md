@@ -123,8 +123,16 @@ Untuk memahami kode diatas mari ambil contoh bahwa satu kartu mempunyai dua kela
 
 Perlu kita ketahui bahwa terkadang koordinat yang terdeteksi bounding box saat bermain terkadang tidak sesuai dengan koordinat kalibrasi. Misalkan kita letakkan kartu di posisi (12,24) berdasakan objek deteksi. Nyatanya saat bermain, koordinat bounding box bergeser sedikit menjadi (13,26). Jika kita menggunakan pernyatan IF-ELSE biasa maka kita tidak bisa melakukan konversi koordinat internal robot karena koordinatnya tidak akan sama. Oleh karena itu kita melakukan pendekatan. 
 
-Jika ada koordinat kalibarasi (12,24), maka kita akan melakukan pendekatan titik mana yang terdekat dengan koordinat kalibrasi (12,24). Sekarang jika ada dua titik (13,26) dan (20,29), maka kita dapat dengan mudah titik pertama (13,26) adalah titik yang terdekat dengan koordinat kalibrasi (12,24)
+Jika ada koordinat kalibrasi (12,24), maka kita akan melakukan pendekatan titik mana yang terdekat dengan koordinat kalibrasi (12,24). Sekarang jika ada dua titik (13,26) dan (20,29), maka kita dapat dengan mudah titik pertama (13,26) adalah titik yang terdekat dengan koordinat kalibrasi (12,24)
 
 Untuk melakukan ini kita akan menggunakan rumus sisi miring segitiga (hypotenuse untuk mencari jarak dari dua titik (titik kalibrasi dan titik kamera saat bermain)) dan kita akan simpan dalam array untuk setiap titik kalibrasi yang kita punya. Tambahkan ELSE-IF sesuai dengan titik yang dimiliki
 
-(![Alt text](./assets/image.png))
+![Alt text](./assets/image.png)
+
+Dalam melakukan kalibrasi ada beberapa hal yang perlu diperhatikan:
+
+- Pastikan kamera menghadap ke bawah sebisa mungkin tegak lurus dengan bidang permukaan meja bermain untuk menghindari distorsi gambar.
+- Pastikan kamera menangkap gambar kartu domino dengan baik dan pencahayaan yang cukup.
+- Pastikan hanya melakukan pengumpulan data kalibrasi sesuai dengan jangkauan robot dan kamera menangkap gambar sesuai jangkauan robot (jangan terlalu dekat).
+
+![Alt text](./assets/cali-vis.png)
