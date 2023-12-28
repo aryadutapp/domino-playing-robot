@@ -2,5 +2,7 @@
 
 Implementasi Robot Arm (Dobot Magician) untuk Bermain Kartu Domino
 
-*Tujuan dari proyek ini adalah untuk mendeteksi lokasi suatu objek dan melakukan operasi pick-and-place. Dari perspektif implementasi, proyek ini membahas  Persepsi Robotika dengan OpenCV (Open-source Computer Vision Library).*
+*Tujuan dari proyek ini adalah untuk mengimplementasikan robot arm (dobot magician) untuk bermain kartu domino dengan lawan pemain manusia dengan mengimplementasikan deteksi objek pada gambar.*
+
+
 
