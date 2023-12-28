@@ -180,6 +180,8 @@ Untuk mengakses Video, silakan klik [Video Demo](https://github.com/aryadutapp/d
 - [Moses Mannuel Paliyama](https://www.linkedin.com/in/moses-mannuel-paliyama-438267151?originalSubdomain=id)
 - [Joel Napitupulu](https://www.linkedin.com/in/joel-napitupulu-649076220/?originalSubdomain=id)
 
+<br />
+
 *Dibuat oleh Kelompok 2 untuk Mata Kuliah Robotika Kreatif*
 
 *Teknik Komputer ITS*
