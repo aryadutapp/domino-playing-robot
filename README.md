@@ -121,7 +121,7 @@ def convert_coordinates(x, y):
 
 Untuk memahami kode diatas mari ambil contoh bahwa satu kartu mempunyai dua kelas deteksi [1,2] mempunyai dua koordinat objek terdeteksi (x,y) = [(214,261), (214, 313)]. Dalam kode diatas kita ambil coba parameter x,y = (215,263). 
 
-Perlu kita ketahui bahwa terkadang koordinat yang terdeteksi bounding box saat bermain terkadang tidak sesuai dengan koordinat kalibrasi. Misalkan kita letakkan kartu di posisi (12,24) berdasakan objek deteksi.Nyatanya saat bermain, koordinat bounding box bergeser sedikit menjadi (13,26). Jika kita menggunakan pernyatan IF-ELSE biasa maka kita tidak bisa melakukan konversi koordinat internal robot karena koordinatnya tidak akan sama. Oleh karena itu kita melakukan pendekatan. 
+Perlu kita ketahui bahwa terkadang koordinat yang terdeteksi bounding box saat bermain terkadang tidak sesuai dengan koordinat kalibrasi. Misalkan kita letakkan kartu di posisi (12,24) berdasakan objek deteksi. Nyatanya saat bermain, koordinat bounding box bergeser sedikit menjadi (13,26). Jika kita menggunakan pernyatan IF-ELSE biasa maka kita tidak bisa melakukan konversi koordinat internal robot karena koordinatnya tidak akan sama. Oleh karena itu kita melakukan pendekatan. 
 
 Jika ada koordinat kalibarasi (12,24), maka kita akan melakukan pendekatan titik mana yang terdekat dengan koordinat kalibrasi (12,24). Sekarang jika ada dua titik (13,26) dan (20,29), maka kita dapat dengan mudah titik pertama (13,26) adalah titik yang terdekat dengan koordinat kalibrasi (12,24)
 
