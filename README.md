@@ -70,6 +70,9 @@ Dapat dilihat di contoh diatas adalah data untuk satu kartu. Mengapa dua objek d
 
 **Lalu bagaimana kita dapat mengonversi koordinat kamera ke robot ?**
 
+Pseudocode
+
+
 ```pseudocode
 FUNGSI convert_coordinates(x, y):
     # Array dari koordinat baseline
@@ -91,6 +94,27 @@ FUNGSI convert_coordinates(x, y):
         KEMBALI -66.49, -248.62
 ```
 
+Python
+```python
+def convert_coordinates(x, y):
+    # Array dari koordinat baseline
+    baselines = [(214, 261), (214, 313), (352, 252), (331, 306)]
+
+    # Menghitung jarak dari koordinat input ke setiap baseline
+    distances = [np.sqrt((x - baseline[0])**2 + (y - baseline[1])**2) for baseline in baselines]
+
+    # Menemukan indeks baseline terdekat
+    closest_index = np.argmin(distances)
+
+    # Mencocokkan indeks baseline terdekat dengan koordinat dunia nyata
+    if closest_index in (0, 1):
+        return -60.12, -200.78
+    elif closest_index in (2, 3):
+        return -66.49, -248.62
+    elif closest_index in (..., ...):
+        return ..., ...
+```
+
 
 Untuk memahami kode diatas mari ambil contoh bahwa satu kartu mempunyai dua kelas deteksi [1,2] mempunyai dua koordinat objek terdeteksi (x,y) = [(214,261), (214, 313)]. Dalam kode diatas kita ambil coba parameter x,y = (215,263). 
 
@@ -100,4 +124,4 @@ Jika ada koordinat kalibarasi (12,24), maka kita akan melakukan pendekatan titik
 
 Untuk melakukan ini kita akan menggunakan rumus sisi miring segitiga (hypotenuse untuk mencari jarak dari dua titik (titik kalibrasi dan titik kamera saat bermain)) dan kita akan simpan dalam array untuk setiap titik kalibrasi yang kita punya. Tambahkan ELSE-IF sesuai dengan titik yang dimiliki
 
-(![Alt text](https://static.tutors.com/assets/images/content/tutors-hypotenuse-pythagorean-theorem.jpg))
+(![Alt text](./assets/image.png))
