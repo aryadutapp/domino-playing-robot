@@ -166,7 +166,13 @@ def pilih_kartu:
 }
 
 ```
-Untuk mengakses kode proyek, silakan mengakses [Kode Bermain](https://github.com/aryadutapp/domino-playing-robot/blob/main/kode-utama.ipynb)
+Untuk mengakses kode proyek, silakan klik [Kode Bermain](https://github.com/aryadutapp/domino-playing-robot/blob/main/kode-utama.ipynb)
+
+Untuk mengakses model YOLOv8, silakan klik [Model YOLOv8](https://github.com/aryadutapp/domino-playing-robot/blob/main/best-2.pt)
+
+Untuk mengakses Artikel Ilmiah, silakan klik [Artikel Ilmiah](https://github.com/aryadutapp/domino-playing-robot/blob/main/best-2.pt)
+
+Untuk mengakses Video, silakan klik [Video Demo](https://github.com/aryadutapp/domino-playing-robot/blob/main/best-2.pt)
 
 ## Kontributor
 
