@@ -26,7 +26,7 @@ Dalam hal ini memfokuskan pengoperasian DoBot Magician melalui Python dengan  me
 
 Untuk berkomunikasi dengan robot, kita memerlukan aplikasi [Dobot Lab](https://www.dobot-robots.com/products/education/magician.html). Selanjutnya pastikan kita juga menginstal 
 [Python](https://www.python.org/) dan [OpenCV](https://opencv.org/) dalam lingkungan Python. Untuk IDE, kita dapat memanfaatkan menu Python Lab dalam aplikasi Dobot Lab.
-![alt text](./assets/dobotlab.png)
+![alt text](./assets/dobot-lab.png)
 
 ## Keperluan
 
@@ -50,7 +50,9 @@ Untuk memahami bagaimana alur kerja pick-and-place mari kita bagi menjadi tiga k
 
 Untuk memahami bagaimana alur kerja robot, mari kita bagi ke tiga bagian yaitu (training, kalibrasi posisi, dan bermain). 
 
-Untuk bagian pertama adalah training yaitu bagaimana robot dapat mendeteksi kartu. Dalam hal ini kita memerlukan untuk mendeteksi kartu dan mengambil koordinat titik tengah dari bounding box. Dalam contoh di repo ini akan menggunakan model YOLOv8 dengan format "detect-model.pt". Jika menggunakan model tipe lain dapat, mengaturnya di bagian kode. Jika ingin menggunakan algoritma deteksi selain YOLOv8, dapat dilakukan asal dapat mengekstrak kelas deteksi dan koordinat titik tengah bounding box. Pada akhirnya, program akan menerima data deteksi dalam bentuk array kelas, array koordinat x dan array koordinat y. 
+**Training**
+
+Untuk bagian pertama adalah training yaitu bagaimana robot dapat mendeteksi kartu. Dalam hal ini kita memerlukan untuk mendeteksi kartu dan mengambil koordinat titik tengah dari bounding box. Dalam contoh di repo ini akan menggunakan model YOLOv8 dengan format "detect-model.pt". Jika menggunakan model tipe lain dapat, mengaturnya di bagian kode. Jika ingin menggunakan algoritma deteksi selain YOLOv8, dapat dilakukan asal dapat mengekstrak kelas deteksi dan koordinat titik tengah bounding box. Pada intinya, program harus menerima data deteksi dalam bentuk array kelas, array koordinat x dan array koordinat y. 
 
 **Contoh Variable Penyimpan Hasil Deteksi**:
 ```python
@@ -68,10 +70,11 @@ Untuk bagian kedua adalah kalibrasi yaitu bagaimana robot dapat menentukan koord
 
 Dapat dilihat di contoh diatas adalah data untuk satu kartu. Mengapa dua objek dengan koordinat kamera yang berbeda memiliki koordinat robot yang sama. Ingat bahwa dalam kartu domino, setiap kartu memiliki 2 nilai (misal[2,3]). maka untuk memudahkan pekerjaan, kita hanya akan mengumpulkan data kalibrasi untuk setiap kartu. Maka 1 kartu yang terdeteksi 2 kelas akan memiliki koordinat akhir robot yang sama.
 
+**Kalibrasi Posisi**
+
 **Lalu bagaimana kita dapat mengonversi koordinat kamera ke robot ?**
 
 Pseudocode
-
 
 ```pseudocode
 FUNGSI convert_coordinates(x, y):
